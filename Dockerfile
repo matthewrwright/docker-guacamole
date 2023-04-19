@@ -77,8 +77,9 @@ RUN mkdir -p /var/lib/tomcat/webapps /var/log/tomcat                            
     ln -s /opt/tomcat/conf /var/lib/tomcat/conf                                                                                                                                     && \
     ln -s /config/log/tomcat /var/lib/tomcat/logs                                                                                                                                   && \
     sed -i '/<\/Host>/i \        <Valve className=\"org.apache.catalina.valves.RemoteIpValve\"\n               remoteIpHeader=\"x-forwarded-for\" />' /opt/tomcat/conf/server.xml
+    sed -i 's/8080/8091' /opt/tomcat/conf/server.xml
 
-EXPOSE 8080
+EXPOSE 8091
 
 VOLUME ["/config"]
 
